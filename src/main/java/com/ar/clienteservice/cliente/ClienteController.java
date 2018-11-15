@@ -1,5 +1,7 @@
 package com.ar.clienteservice.cliente;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,9 +16,9 @@ public class ClienteController {
 	private ClienteService service;
 
 	@RequestMapping(value = "/cliente", method = RequestMethod.POST)
-	public ResponseEntity<String> incluirCliente(@RequestBody(required = true) String cpf) {
+	public ResponseEntity<String> incluirCliente(@RequestBody @Valid IncluirClienteDto dto) {
 		
-		Cliente cliente = service.incluir(new Cliente(cpf));
+		Cliente cliente = service.incluir(new Cliente(dto.getCpf()));
 		
 		return ResponseEntity.ok(String.valueOf(cliente.getId()));
 	}

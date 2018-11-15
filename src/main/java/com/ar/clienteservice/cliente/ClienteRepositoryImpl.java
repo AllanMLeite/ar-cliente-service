@@ -14,6 +14,6 @@ public class ClienteRepositoryImpl implements ClienteRepository {
 	@Override
 	public boolean consultarSituacaoCpf(Cliente cliente) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 }
