@@ -43,6 +43,14 @@ public class ClienteControllerTest {
 		this.mockMvc
 				.perform(post(ENDPOINT_CLIENTE).content("{\"cpf\":\"01234567890\"}").contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk()).andExpect(content().string(containsString("354")));
-		;
+	}
+	
+	@Test
+	public void	deveTratarExcecaoDoTipoIllegalArgumentException() throws Exception {
+		Mockito.doThrow(new IllegalArgumentException("Mensagem 123")).when(service).incluir(Mockito.any(Cliente.class));
+
+		this.mockMvc
+				.perform(post(ENDPOINT_CLIENTE).content("{\"cpf\":\"01234567890\"}").contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isBadRequest()).andExpect(content().string(containsString("Mensagem 123")));
 	}
 }
