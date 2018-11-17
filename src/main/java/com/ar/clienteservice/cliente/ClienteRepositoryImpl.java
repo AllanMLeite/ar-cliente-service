@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 @Repository
 public class ClienteRepositoryImpl implements ClienteRepository {
 	
-	private static final String ENDPOINT_SITUACAO_CPF = "http://ar-validador-comum-service/situacao/cpf";
+	private static final String ENDPOINT_SITUACAO_CPF = "http://localhost:8082/situacao/cpf";
 	
 	@Autowired
 	private RestTemplate restTemplate;
